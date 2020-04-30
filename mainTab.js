@@ -4,23 +4,24 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 
-import HomeScreen from '../screens/home';
-import ProfileScreen from '../screens/profile';
+import HomeStackScreen from './homeStack';
+import ProfileScreen from './profile';
+import WelcomeScreen from "./welcome";
 
-const MainTab = createMaterialBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
+const MainTab = createMaterialBottomTabNavigator();
 
 
 function MyTabs() {
     return (
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#e91e63"
+        activeColor="white"
         style={{ backgroundColor: 'tomato' }}
       >
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeStackScreen}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -35,6 +36,16 @@ function MyTabs() {
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{
+            tabBarLabel: 'Welcome',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="cart" color={color} size={26} />
             ),
           }}
         />
